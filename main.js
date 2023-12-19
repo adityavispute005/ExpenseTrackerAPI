@@ -1,4 +1,3 @@
-// Replace this URL with your actual API endpoint
 const apiEndpoint = 'https://crudcrud.com/api/22f9d88a78c44c3082abf3d08a3102ed/expensetracker';
 
 let products = [];
