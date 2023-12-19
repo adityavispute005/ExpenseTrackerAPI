@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
+    <link rel="shortcut icon" href="./budget.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Expense Tracker</h1>
+        <img src="./budget.png" width="80px" height="80px" alt="Logo">
         <div>
             <label for="productName">Product Name:</label>
             <input type="text" id="productName" placeholder="Enter product name">
@@ -20,8 +22,13 @@
         <button onclick="addProduct()">Add Product</button>
         <div id="output"></div>
         <div>Total: Rs <span id="totalAmount">0.00</span></div>
+        <footer>
+            <p>&copy; 2023 ADITYA VISPUTE. All rights reserved.</p>
+        </footer>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
+    
 </body>
 </html>
