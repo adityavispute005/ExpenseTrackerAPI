@@ -1,62 +1,44 @@
-const apiEndpoint = 'https://crudcrud.com/api/22f9d88a78c44c3082abf3d08a3102ed/expensetracker';
+let expenses = [];
 
-let products = [];
-let totalAmount = 0;
+function addExpense() {
+    const category = document.getElementById('category').value;
+    const amount = document.getElementById('amount').value;
+    const description = document.getElementById('description').value;
 
-function addProduct() {
-    const productName = document.getElementById('productName').value;
-    const sellingPrice = parseFloat(document.getElementById('sellingPrice').value);
+    if (category && amount) {
+        const expense = {
+            category,
+            amount,
+            description,
+        };
 
-    if (!productName || isNaN(sellingPrice)) {
-        alert('Please enter valid product information');
-        return;
+        expenses.push(expense);
+        displayExpenses();
+        updateTotal();
+        clearForm();
+    } else {
+        alert('Please fill in all the fields.');
     }
-
-    // Add product to the local array
-    products.push({ productName, sellingPrice });
-
-    // Update the UI
-    displayProducts();
-    updateTotalAmount();
-
-    // Send data to the server using Axios
-    axios.post(apiEndpoint, { productName, sellingPrice })
-        .then(response => {
-            console.log('Data sent to the server:', response.data);
-        })
-        .catch(error => {
-            console.error('Error sending data to the server:', error);
-        });
 }
 
-function displayProducts() {
-    const outputDiv = document.getElementById('output');
-    outputDiv.innerHTML = '';
+function displayExpenses() {
+    const tableBody = document.getElementById('expenseTableBody');
+    tableBody.innerHTML = '';
 
-    products.forEach(product => {
-        outputDiv.innerHTML += `<div>${product.productName} - Rs ${product.sellingPrice.toFixed(2)} <button onclick="deleteProduct('${product.productName}', ${product.sellingPrice})">Delete</button></div>`;
+    expenses.forEach(expense => {
+        const row = tableBody.insertRow();
+        row.innerHTML = `<td>${expense.category}</td><td>${expense.amount}</td><td>${expense.description}</td>`;
     });
 }
 
-function deleteProduct(productName, sellingPrice) {
-    // Delete the product from the local array
-    products = products.filter(product => product.productName !== productName || product.sellingPrice !== sellingPrice);
-
-    // Update the UI
-    displayProducts();
-    updateTotalAmount();
-
-    // Send a request to the server to delete the product
-    axios.delete(apiEndpoint + `/${productName}`)
-        .then(response => {
-            console.log('Product deleted from the server:', response.data);
-        })
-        .catch(error => {
-            console.error('Error deleting product from the server:', error);
-        });
+function updateTotal() {
+    const totalElement = document.getElementById('total');
+    const totalAmount = expenses.reduce((total, expense) => total + parseInt(expense.amount), 0);
+    totalElement.textContent = `Total: INR ${totalAmount}`;
 }
 
-function updateTotalAmount() {
-    totalAmount = products.reduce((total, product) => total + product.sellingPrice, 0);
-    document.getElementById('totalAmount').textContent = totalAmount.toFixed(2);
+function clearForm() {
+    document.getElementById('category').value = 'movie';
+    document.getElementById('amount').value = '';
+    document.getElementById('description').value = '';
 }

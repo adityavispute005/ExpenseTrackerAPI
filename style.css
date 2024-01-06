@@ -1,78 +1,45 @@
+/* Add your custom styles here */
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(45deg,#e8c547, #c5283d, #9046cf, #226ce0, #e8c547, #d90368);
+    background-color: #F1F0CC;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 8px;
-    border-style:ridge;
-    border-color: black;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    max-width: 800px;
+    margin: auto;
     text-align: center;
 }
 
 h1 {
-    color: #333;
-    font-size: 24px;
+    color: #A71D31;
+    font-family: Lucida Handwriting;
+}
+
+.form-group {
     margin-bottom: 20px;
 }
 
-input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #222222;
-    color: #fff;
+.btn-primary {
+    background-color: #A71D31;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-align: center;
 }
 
-button:hover {
-    background-color: #e71d36;
+.btn-primary:hover {
+    background-color: #A71D31;
 }
 
-#output {
+.table {
     margin-top: 20px;
-    text-align: left;
 }
 
-div > div {
-    background-color: #f2f4ff;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 4px;
+.table th, .table td {
+    text-align: center;
 }
 
-button.delete {
-    background-color: #F8333C;
-}
-
-button.delete:hover {
-    background-color: #c0392b;
-}
-
-#totalAmount {
-    font-weight: bold;
-    color: #333;
-    font-size: 18px;
-    margin-top: 10px;
+.table thead {
+    background-color: #A71D31;
+    color: #fff;
 }
