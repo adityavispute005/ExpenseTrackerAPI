@@ -1,45 +1,141 @@
-/* Add your custom styles here */
-
 body {
-    background-color: #F1F0CC;
-    font-family: 'Arial', sans-serif;
+    font-family: Bahnschrift SemiBold;
+    margin: 0;
+    padding: 0;
+    background-color: #F1FFFA;
+    background-image: url(bgmoney2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.heading {
     text-align: center;
+    font-family: Segoe Print;
+    padding: 10px;
+    margin: 20px auto;
+    max-width: 950px;
+    background-color: #FFFFFF;
+    color: #131200;
+    border-style:groove;
+    border-color: #000F08;
+    border-radius: 20px;
 }
 
-.container {
-    max-width: 800px;
-    margin: auto;
+nav {
     text-align: center;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-style:groove;
+    border-color: #000F08;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    color: #A71D31;
-    font-family: Lucida Handwriting;
+#pro {
+    font-family: Bahnschrift SemiBold;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-style: groove;
+    border-color: #000F08;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
-    margin-bottom: 20px;
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-.btn-primary {
-    background-color: #A71D31;
-    border: none;
-    text-align: center;
+.label {
+    margin-bottom: 8px;
 }
 
-.btn-primary:hover {
-    background-color: #A71D31;
+.box {
+    margin-bottom: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
 }
 
-.table {
+
+
+#totalAmount {
     margin-top: 20px;
-}
-
-.table th, .table td {
+    margin: 20px auto;
+    background-color: #EBF2FA;
     text-align: center;
+    padding: 15px;
+    border-radius: 20px;
+    border-style: inset;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.table thead {
-    background-color: #A71D31;
+
+
+h2 {
+    color: black;
+    text-align: center;
+    background-color: #EBF2FA;
+    border-radius: 15px;
+    border-style: inset;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    border-radius: 15px;
+}
+
+li {
+    text-align: center;
+    background-color: #F3EAF4;
+    margin: 20px auto;
+    padding: 15px;
+    margin-bottom: 8px;
+    border-radius: 15px;
+    border-style: inset;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #F72C25;
     color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border-radius: 20px;
+    border-style:outset;
+}
+.addbutton{
+    background-color: #17DE6D;
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border-radius: 20px;
+    border-style:outset;
+}
+.addbutton:hover{
+    background-color: #0E8140;
+}
+
+button:hover {
+    background-color: #B80C09;
+}
+
+/* Add responsive styles if needed */
+@media (max-width: 768px) {
+    nav {
+        max-width: 100%;
+    }
+    #pro {
+        max-width: 100%;
+    }
 }

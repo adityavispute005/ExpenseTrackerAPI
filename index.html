@@ -1,59 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
     <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
+    <div class="heading">
+        <h1>Rest API Project on Expense Tracker</h1>
+    </div>
+    <nav>
+        <form onsubmit="addExpense(event)" id="form">
 
-    <div class="container">
-        <h1 class="text-center mt-5">Expense Tracker</h1>
+            <label> <b>Choose Description:</b></label>
+            <input type="text" class="box" name="descrip" id="descripId" placeholder="Enter here" required/><br>
 
-        <!-- Form to add an expense -->
-        <form id="expenseForm" class="mt-4">
-            <div class="form-group">
-                <label for="category">Category:</label>
-                <select class="form-control" id="category" required>
-                    <option value="movie">Movie</option>
-                    <option value="recharge">Recharge</option>
-                    <option value="travel">Travel</option>
-                    <option value="food">Food</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="amount">Amount (INR):</label>
-                <input type="number" class="form-control" id="amount" placeholder="Enter amount" min="1" required>
-            </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <input type="text" class="form-control" id="description" placeholder="Enter description">
-            </div>
-            <button type="button" class="btn btn-primary" onclick="addExpense()">Add Expense</button>
+            <label> <b>Choose A Category:</b> </label>
+            <select name="category" class="box" id="categoryId" required>
+                <option value="Electronics">Electronics</option>
+                <option value="FoodItem">Food Item</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Travel">Travel</option>
+                <option value="Loan">Loan</option>
+                <option value="Other">Other</option>
+            </select><br> <br>
+
+            <label> <b>Enter Amount:</b></label>
+            <input type="number" class="box" name="amount" id="amountId" placeholder="Enter here" required/><br>
+
+            <button id="addbutton" class="addbutton"> <b>Add Products</b></button>
         </form>
+        <br>
+        <div id="totalAmount">Total Amount: Rs.0</div>
+    </nav>
+    
+    <div id="pro">
+        <h2>- Products -</h2>
 
-        <!-- Table to display expenses -->
-        <table class="table mt-5">
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Amount (INR)</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody id="expenseTableBody">
-                <!-- Expense items will be added here dynamically -->
-            </tbody>
-        </table>
-            <span id="total" class="font-weight-bold mt-3">Total: INR 0</span>
+        <h2>Electronics</h2>
+        <ul id='listOfUser1'></ul>
+
+        <h2>Food</h2>
+        <ul id='listOfUser2'></ul>
+
+        <h2>Shopping</h2>
+        <ul id='listOfUser3'></ul>
+
+        <h2>Travel</h2>
+        <ul id='listOfUser4'></ul>
+
+        <h2>Loan</h2>
+        <ul id='listOfUser5'></ul>
+
+        <h2>Other</h2>
+        <ul id='listOfUser6'></ul>
+
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js"></script>
     <script src="main.js"></script>
 </body>
-</html>
+
+</html>     

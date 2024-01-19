@@ -1,44 +1,86 @@
-let expenses = [];
+async function addExpense(event) {
+    try {
+    event.preventDefault();
+    const expense = event.target.amount.value;
+    const description = event.target.descrip.value;
+    const selecting = event.target.category.value;
+    const obj = {
+        expense,
+        description,
+        selecting
+    }
+        const response = await axios.post("https://crudcrud.com/api/e2535e2213654404909a8ae54b4a239e/addProduct", obj)
 
-function addExpense() {
-    const category = document.getElementById('category').value;
-    const amount = document.getElementById('amount').value;
-    const description = document.getElementById('description').value;
+        showUserOnScreen(response.data)
+        console.log(response) 
 
-    if (category && amount) {
-        const expense = {
-            category,
-            amount,
-            description,
-        };
-
-        expenses.push(expense);
-        displayExpenses();
-        updateTotal();
-        clearForm();
-    } else {
-        alert('Please fill in all the fields.');
+    }
+    catch (err) {
+        console.log(err)
     }
 }
 
-function displayExpenses() {
-    const tableBody = document.getElementById('expenseTableBody');
-    tableBody.innerHTML = '';
+window.addEventListener("DOMContentLoaded", () => {
+    async function reload() {
+        try {
+            const response = await axios.get("https://crudcrud.com/api/e2535e2213654404909a8ae54b4a239e/addProduct")
 
-    expenses.forEach(expense => {
-        const row = tableBody.insertRow();
-        row.innerHTML = `<td>${expense.category}</td><td>${expense.amount}</td><td>${expense.description}</td>`;
-    });
+            for (let i = 0; i < response.data.length; i++) {
+                showUserOnScreen(response.data[i])
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+    }
+    reload()
+})
+let totalAmount = 0;
+function showUserOnScreen(user) {
+    let parentNode;
+    if (user.selecting == "Electronics") {
+        parentNode = document.getElementById('listOfUser1');
+    }
+    else if (user.selecting == "FoodItem") {
+        parentNode = document.getElementById('listOfUser2');
+    } 
+    else if (user.selecting == "Shopping") {
+        parentNode = document.getElementById('listOfUser3');
+    }
+    else if (user.selecting == "Travel") {
+        parentNode = document.getElementById('listOfUser4');
+    }
+    else if (user.selecting == "Loan") {
+        parentNode = document.getElementById('listOfUser5');
+    }
+    else if (user.selecting = "Other") {
+        parentNode = document.getElementById('listOfUser6');
+    }
+    const childHTML = `<li id=${user._id}> ${user.expense} - ${user.description} - ${user.selecting}
+        <button onclick = deleteUser('${user._id}')> Delete User </button>
+        </li>`
+    parentNode.innerHTML = parentNode.innerHTML + childHTML;
+
+    totalAmount += parseFloat(user.expense);
+    document.getElementById('totalAmount').textContent = `Total Amount: Rs${totalAmount.toFixed(2)}`;
+
 }
 
-function updateTotal() {
-    const totalElement = document.getElementById('total');
-    const totalAmount = expenses.reduce((total, expense) => total + parseInt(expense.amount), 0);
-    totalElement.textContent = `Total: INR ${totalAmount}`;
+async function deleteUser(userId) {
+    try {
+        const response = await axios.delete(`https://crudcrud.com/api/e2535e2213654404909a8ae54b4a239e/addproduct/${userId}`)
+        console.log(response)
+        removeUserFromScreen(userId)
+    }
+    catch (err) {
+        console.log(err)
+    }
 }
 
-function clearForm() {
-    document.getElementById('category').value = 'movie';
-    document.getElementById('amount').value = '';
-    document.getElementById('description').value = '';
+function removeUserFromScreen(userId) {
+    const childNodeToBeDeleted = document.getElementById(userId)
+    if (childNodeToBeDeleted) {
+        childNodeToBeDeleted.parentNode.removeChild(childNodeToBeDeleted)
+    }
 }
